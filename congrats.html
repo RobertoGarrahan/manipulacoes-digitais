@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manipulações Digitais</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="landing is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header" class="alt">
+        <h1><a href="index.html">Manipulações Digitais</a></h1>
+      </header>
+
+      <!-- Landing Page -->
+      <section
+        id="banner"
+        style="
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+        "
+      >
+        <style>
+          /* Título laranja com tamanho responsivo */
+          #banner h2 {
+            color: #ffa500;
+            font-size: 1.5rem; /* tamanho padrão para mobile */
+            margin-bottom: 20px;
+          }
+
+          @media (min-width: 768px) {
+            #banner h2 {
+              font-size: 3rem; /* aumenta no desktop */
+            }
+          }
+        </style>
+
+        <div
+          class="inner"
+          style="width: 90%; max-width: 600px; text-align: center"
+        >
+          <h1 style="font-size: 3rem; margin-bottom: 40px">
+            Você chegou ao fim do labirinto!
+          </h1>
+          <h2>Manipulações Digitais</h2>
+          <p>
+            Um projeto por:<br />
+            <a href="#">Julia "Jaysaq" Alfradique</a> <br />
+            <a href="http://robertogarrahan.com">Roberto Garrahan</a>
+          </p>
+
+          <ul class="actions special" style="list-style: none; padding: 0">
+            <li>
+              <a
+                href="index.html"
+                class="button primary"
+                style="
+                  font-size: 1.2rem;
+                  padding: 12px 30px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 50px;
+                "
+              >
+                Voltar ao início
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a
+          href="#one"
+          class="more scrolly"
+          style="margin-top: auto; padding-bottom: 15px"
+          >Veja Mais</a
+        >
+        <script>
+          // Confete animado
+          for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.backgroundColor = `hsl(${
+              Math.random() * 360
+            }, 70%, 60%)`;
+            confetti.style.animationDelay = Math.random() * 2 + "s";
+            confetti.style.animationDuration = 3 + Math.random() * 3 + "s";
+            document.body.appendChild(confetti);
+          }
+        </script>
+      </section>
+
+      <!-- Seção 1 -->
+      <section id="one" class="wrapper style1 special">
+        <div class="inner">
+          <header class="major">
+            <h2>Sobre o projeto</h2>
+            <p>
+              A pesquisa tem como objetivo explorar a relação entre o mundo real
+              e o cibernético através de um site interativo. Por meio de uma
+              abordagem estética, são elaboradas reflexões sobre o consumo e a
+              obsolescência programada. Na sociedade em que vivemos, o mundo
+              digital nos cerca, nos fascina mas também nos prende, de maneira
+              que passamos tanto tempo olhando para telas que esquecemos de
+              olhar ao redor e perceber o ambiente em que estamos. Como podemos
+              lidar com essa ambiguidade no uso das tecnologias? A proposta aqui
+              apresentada é um convite para combinar a vivência digital com a
+              presença no mundo físico.<br />
+              O projeto é um site labirinto onde se navega por imagens. As
+              imagens presentes no site são autorais, uma mistura de fotografias
+              de diversos dispositivos obsoletos e também de documentação de
+              experimentações artísticas, alteradas digitalmente. Existe uma
+              ordem certa para o acesso das imagens, o único indicativo desse
+              caminho a ser percorrido é uma sequência de luzes, conectadas ao
+              dispositivo por meio de um micro comunicador com acesso a internet
+              (ESP). Em cada imagem, itens clicáveis estão escondidos, levando o
+              participante para a próxima imagem: alguns itens levarão à
+              sequência certa, outros não. Concluir ou não o labirinto é uma
+              escolha individual e a compreensão de que aquilo é um labirinto
+              também será particular: parte do experimento é observar quais
+              escolhas serão feitas. A investigação pretende observar o
+              engajamento por curiosidade ou desinteresse de quem interage com a
+              proposta, ainda será preciso buscar soluções para documentar tais
+              reações.
+            </p>
+          </header>
+        </div>
+      </section>
+
+      <!-- Seção 2 -->
+      <section id="two" class="wrapper alt style2">
+        <section class="spotlight" style="padding: 60px 0">
+          <div class="image"><img src="images/esboco.jpg" alt="" /></div>
+          <div class="content">
+            <h2>Esboço</h2>
+            <p>
+              O processo de esboço do projeto se iniciou no papel, assim como a
+              maioria das minhas ideias acontece. O site ainda era muito
+              abstrato na minha cabeça, então desenhei pra que ficasse mais
+              claro. Assim também surgiram as primeiras relações poéticas do
+              projeto, pensando a relação entre o mundo digital e físico.
+            </p>
+          </div>
+        </section>
+        <section class="spotlight" style="padding: 60px 0">
+          <div class="image"><img src="images/tinkercad.png" alt="" /></div>
+          <div class="content">
+            <h2>Tinkercad</h2>
+            <p>
+              O Tinkercad é um site que possibilita o teste de circuitos. Porém,
+              foi um teste que não render tantos frutos quanto eu gostaria.
+              Infelizmente não consegui explorar tanto a ferramenta a ponto de
+              reproduzir com precisão o dispositivo como um todo. Tive
+              dificuldades com a parte de programação do arduino, mas espero que
+              no futuro eu consiga compreender o básico de códigos e desenvolver
+              melhor esse teste.
+            </p>
+          </div>
+        </section>
+        <section class="spotlight" style="padding: 60px 0">
+          <div class="image"><img src="images/desmontagem.jpg" alt="" /></div>
+          <div class="content">
+            <h2>DESMONTAGEM DOS DISPOSITIVOS<br /></h2>
+            <p>
+              Comecei a coleta de materiais obsoletos para que eu pudesse
+              desmontar. Essa parte do projeto pra mim foi uma das mais
+              importantes. Sou uma artista que gosta de trabalhar a matéria com
+              as mãos, e sempre tive curiosidade em desmontar peças. Juntei uma
+              placa mãe de computador, uma ventoinha e um rádio antigo, que
+              desmontei por inteiro. Existe algo terapêutico em desmontar algo
+              sem a necessidade de colocar tudo de volta no lugar. Quase como
+              uma bagunça sem culpa.
+            </p>
+          </div>
+        </section>
+        <section class="spotlight" style="padding: 60px 0">
+          <div
+            class="image"
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+              padding: 0 20px;
+            "
+          >
+            <img
+              src="images/edicao_2.png"
+              alt="Imagem 2"
+              style="width: 48%; height: auto"
+            />
+            <img
+              src="images/edicao_1.png"
+              alt="Imagem 1"
+              style="width: 48%; height: auto"
+            />
+          </div>
+          <div class="content">
+            <h2>SELEÇÃO E EDIÇÃO DAS IMAGENS<br /></h2>
+            <p>
+              As fotos e seleção das imagens foi feita completamente a partir de
+              áreas de interesse visual em cada peça. Revirei todas elas para
+              conseguir tirar fotos de ângulos que gerassem mais esse interesse.
+              A edição foi feita pelo aplicativo ClipStudio Paint, e virou uma
+              brincadeira com sobreposição, camadas e transparências. Não foi a
+              primeira vez que trabalhei com edição de imagens dessa forma, mas
+              com certeza foi a que mais explorei os recursos de edição do
+              próprio aplicativo.
+            </p>
+          </div>
+        </section>
+
+        <section class="spotlight" style="padding: 60px 0">
+          <div class="image">
+            <img src="images/selecao_imagens.png" alt="" />
+          </div>
+          <div class="content">
+            <h2>Esboço final para o engenheiro de software<br /></h2>
+            <p>
+              Para que a ideia ficasse o mais clara possível, fiz mais um
+              desenho já com as imagens finais do site para que ele conseguisse
+              fazer toda a programação necessária. Também trabalhamos juntos
+              para construir a home e colocar o site em funcionamento.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <!-- Seção 3 -->
+      <section id="cta" class="wrapper style4">
+        <div class="inner">
+          <header>
+            <h2>Manipulações Digitais</h2>
+            <p>Obrigado por jogar!</p>
+          </header>
+          <ul class="actions stacked">
+            <li>
+              <a href="img_a.html" class="button fit primary">recomeçar!</a>
+            </li>
+            <li>
+              <a
+                href="#banner"
+                class="button fit more scrolly"
+                style="
+                  font-size: 0.8rem;
+                  padding: 8px 16px;
+                  line-height: 1.4;
+                  display: inline-block;
+                  text-align: center;
+                "
+              >
+                Voltar ao topo
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="icons">
+          <li>
+            <a
+              href="https://www.instagram.com/jaysaq_tattoo/"
+              class="icon brands fa-instagram"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a
+              href="mailto:julia.alfradique7@gmail.com"
+              class="icon solid fa-envelope"
+            >
+              <span class="label">Email</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; 2026 Julia Sodré Alfradique Quintella</li>
+          <li>
+            Site feito por:
+            <a href="http://robertogarrahan.com">Roberto Garrahan</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

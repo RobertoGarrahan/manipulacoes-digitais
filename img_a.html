@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jaysaq</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+      }
+      area[alt="F"] {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="img_a.png" usemap="#map_a" alt="Imagem A" />
+
+    <map name="map_a">
+      <area
+        alt="D"
+        href="img_d.html"
+        coords="1160,2188,1307,1395,1536,1379,1401,2209,1283,2197"
+        shape="poly"
+      />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="20,917,188,872,376,999,384,1379,261,1551,8,1551"
+        shape="poly"
+      />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="1254,455,1397,463,1446,341,1520,300,1569,193,1381,132,1283,185,1140,177,1127,259"
+        shape="poly"
+      />
+      <area alt="D" href="img_d.html" coords="3067,1338,182" shape="circle" />
+      <area alt="D" href="img_d.html" coords="3063,995,177" shape="circle" />
+      <area alt="D" href="img_d.html" coords="3390,982,159" shape="circle" />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="3578,1,3546,63,3558,149,3774,218,3925,222,4093,161,4093,71,3950,10"
+        shape="poly"
+      />
+      <area
+        alt="B"
+        href="img_b.html"
+        coords="3930,1870,3905,1518,4015,1493,4003,1412,4040,1404,4036,1367,4371,1330,4395,1399,4420,1457,4526,1485,4522,1829"
+        shape="poly"
+      />
+    </map>
+
+    <!-- Script que ajusta o mapa automaticamente -->
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        if (typeof imageMapResize === "function") {
+          imageMapResize();
+        }
+      });
+    </script>
+
+    <script>
+      (function () {
+        const KEY = "jaysaq_path";
+        function getPath() {
+          return JSON.parse(localStorage.getItem(KEY)) || [];
+        }
+        function savePath(p) {
+          localStorage.setItem(KEY, JSON.stringify(p));
+        }
+        function pushStep(step) {
+          const p = getPath();
+          if (p[p.length - 1] !== step) p.push(step);
+          while (p.length > 4) p.shift();
+          savePath(p);
+        }
+
+        // registra entrada na página A
+        document.addEventListener("DOMContentLoaded", () => {
+          pushStep("A");
+
+          // intercepta cliques nas areas para garantir registro antes da navegação
+          document.querySelectorAll("area").forEach((area) => {
+            area.addEventListener("click", (e) => {
+              // não precisamos impedir o default aqui — só registramos e deixamos o navegador seguir
+              const href = area.getAttribute("href") || "";
+              const m = href.match(/img_([a-d])\.html/i);
+              if (m) {
+                // o link vai para outra imagem (B/C/D) — registramos o próximo passo
+                pushStep(m[1].toUpperCase());
+              }
+              // se o href for externo ou congrats, deixamos seguir; no D lidaremos separado
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

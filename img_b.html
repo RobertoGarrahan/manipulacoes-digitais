@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jaysaq</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+      }
+      area[alt="F"] {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="img_b.png" usemap="#map_b" alt="Imagem B" />
+
+    <map name="map_b">
+      <area
+        alt="D"
+        href="img_d.html"
+        coords="122,704,154,677,158,564,174,548,217,546,258,509,240,446,165,473,86,518,79,686"
+        shape="poly"
+      />
+      <area
+        alt="D"
+        href="img_d.html"
+        coords="267,367,312,374,339,356,346,227,400,211,455,166,430,118,353,134,267,182"
+        shape="poly"
+      />
+      <area
+        alt="A"
+        href="img_a.html"
+        coords="183,1434,561,1111,502,1023,672,896,1095,1438"
+        shape="poly"
+      />
+      <area
+        alt="F"
+        href="javascript:void(0)"
+        coords="1216,373,32"
+        shape="circle"
+      />
+      <area
+        alt="F"
+        href="javascript:void(0)"
+        coords="1746,751,1870,1192"
+        shape="rect"
+      />
+      <area
+        alt="F"
+        href="javascript:void(0)"
+        coords="1961,1020,2026,1233"
+        shape="rect"
+      />
+      <area
+        alt="F"
+        href="javascript:void(0)"
+        coords="1719,1438,2051,1231,2108,1242,2160,1167,2560,898,2555,1228,2205,1438"
+        shape="poly"
+      />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="2038,460,2085,532"
+        shape="rect"
+      />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="2126,319,2237,405"
+        shape="rect"
+      />
+      <area
+        alt="C"
+        href="img_c.html"
+        coords="2286,220,2332,308"
+        shape="rect"
+      />
+      <area
+        alt="F"
+        href="javascript:void(0)"
+        coords="1818,236,1922,26,1970,21,1999,3,2130,8,2203,62,2157,139,2058,206,1936,243"
+        shape="poly"
+      />
+    </map>
+
+    <!-- Script que ajusta o mapa automaticamente -->
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        if (typeof imageMapResize === "function") {
+          imageMapResize();
+        }
+      });
+    </script>
+
+    <script>
+      (function () {
+        const KEY = "jaysaq_path";
+        function getPath() {
+          return JSON.parse(localStorage.getItem(KEY)) || [];
+        }
+        function savePath(p) {
+          localStorage.setItem(KEY, JSON.stringify(p));
+        }
+        function pushStep(step) {
+          const p = getPath();
+          if (p[p.length - 1] !== step) p.push(step);
+          while (p.length > 4) p.shift();
+          savePath(p);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          pushStep("B");
+          document.querySelectorAll("area").forEach((area) => {
+            area.addEventListener("click", () => {
+              const href = area.getAttribute("href") || "";
+              const m = href.match(/img_([a-d])\.html/i);
+              if (m) pushStep(m[1].toUpperCase());
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

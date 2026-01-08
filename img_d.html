@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jaysaq</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="img_d.png" usemap="#map_d" alt="Imagem D" />
+
+    <map name="map_d">
+      <area
+        href="congrats.html"
+        coords="45,202,547,360"
+        shape="rect"
+      />
+      <area
+        href="congrats.html"
+        coords="45,3,430,107"
+        shape="rect"
+      />
+      <area
+        href="congrats.html"
+        coords="90,905,77"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="90,1115,75"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="93,1323,78"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="439,1436,387,1321,418,1251,470,1217,561,1215,593,1147,665,1142,728,1142,758,1190,767,1228,825,1210,929,1215,986,1280,995,1348,981,1432"
+        shape="poly"
+      />
+      <area
+        href="congrats.html"
+        coords="1031,1380,1063,1188,1445,1197,1472,1391"
+        shape="poly"
+      />
+      <area
+        href="congrats.html"
+        coords="1190,1042,64"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="1603,1287,69"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="1906,1043,72"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="1348,984,1334,1133,1739,1145,1766,1124,1746,975,1698,1009,1402,1020"
+        shape="poly"
+      />
+      <area
+        href="congrats.html"
+        coords="1918,1325,2246,1418"
+        shape="rect"
+      />
+      <area
+        href="congrats.html"
+        coords="2241,1246,2555,1328"
+        shape="rect"
+      />
+      <area
+        href="congrats.html"
+        coords="905,129,208"
+        shape="circle"
+      />
+      <area
+        href="congrats.html"
+        coords="1506,121,1597,107,1621,1,1857,1,1873,35,1884,125,1861,173,1796,213,1687,234,1664,270,1585,281,1524,288,1477,240,1474,152"
+        shape="poly"
+      />
+      <area
+        href="congrats.html"
+        coords="2551,1106,2497,1093,2492,1020,2356,1018,2343,991,2311,1002,2271,776,2198,776,2203,735,2117,726,2112,769,2058,767,2058,722,2001,722,1988,351,2094,344,2094,234,2191,256,2200,347,2241,356,2252,331,2334,347,2352,331,2488,331,2497,349,2555,333"
+        shape="poly"
+      />
+    </map>
+
+    <!-- Script que ajusta o mapa automaticamente -->
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        if (typeof imageMapResize === "function") {
+          imageMapResize();
+        }
+      });
+    </script>
+    <!-- Script para caminho correto -->
+    <script>
+      (function () {
+        const KEY = "jaysaq_path";
+        function getPath() {
+          return JSON.parse(localStorage.getItem(KEY)) || [];
+        }
+        function savePath(p) {
+          localStorage.setItem(KEY, JSON.stringify(p));
+        }
+        function pushStep(step) {
+          const p = getPath();
+          if (p[p.length - 1] !== step) p.push(step);
+          while (p.length > 4) p.shift();
+          savePath(p);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          // intercepta todas as áreas da imagem D
+          document.querySelectorAll("area").forEach((area) => {
+            area.addEventListener("click", (e) => {
+              e.preventDefault(); // controlamos a navegação manualmente
+
+              const href = area.getAttribute("href") || "";
+
+              // sempre registra que clicou em D (estamos na página D)
+              pushStep("D");
+
+              // se o destino for a página de parabéns (ajuste o nome se for diferente)
+              if (/congrats\.html|final\.html/i.test(href)) {
+                const p = getPath().slice(-4);
+                // checa sequência A,B,C,D
+                if (
+                  p.length === 4 &&
+                  p[0] === "A" &&
+                  p[1] === "B" &&
+                  p[2] === "C" &&
+                  p[3] === "D"
+                ) {
+                  // caminho certo -> vai pra parabéns
+                  window.location.href = href;
+                } else {
+                  //alert("Você se perdeu no caminho! Voltando ao início...");
+                  // limpa histórico opcionalmente
+                  localStorage.removeItem(KEY);
+                  window.location.href = "img_a.html";
+                }
+                return;
+              }
+
+              // se o href aponta para outra imagem (ex: img_a.html, img_b.html...)
+              const m = href.match(/img_([a-d])\.html/i);
+              if (m) {
+                pushStep(m[1].toUpperCase());
+              }
+
+              // navegar normalmente para o href
+              window.location.href = href;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
